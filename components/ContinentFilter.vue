@@ -36,5 +36,10 @@ export default {
   border-radius: var(--border-radius-img-card);
   box-shadow: var(--main-shadow);
   padding: 1em;
+  cursor: pointer;
+}
+.dark-mode--active .filter-select {
+  background-color: hsl(210, 22%, 22%);
+  color: hsl(0, 0%, 100%);
 }
 </style>

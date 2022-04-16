@@ -1,8 +1,11 @@
 <template>
   <div class="header-element">
     <h2>{{ title }} ?</h2>
-    <div class="dark-mode">
-      <span><i class="far fa-moon"></i></span>
+    <div @click="shiftDarkMode" class="dark-mode">
+      <span >
+        <i v-if="darkMode" class="far fa-light fa-sun"></i>
+        <i v-else class="far fa-moon"></i>
+      </span>
       <span>Dark mode</span>
     </div>
   </div>
@@ -13,7 +16,15 @@ export default {
   data() {
     return {
       title: "Where in the world",
+      darkMode: false,
     };
+  },
+  methods: {
+    shiftDarkMode() {
+      console.log("heehehe");
+      this.darkMode = !this.darkMode;
+      this.$emit('shift-dark-mode', this.darkMode);
+    },
   },
 };
 </script>
@@ -32,11 +43,19 @@ export default {
   background: hsl(0, 0%, 100%);
 }
 .header-element h2 {
-  font-weight: lighter;
-  font-size: 1em;
+  font-weight: 400;
+  font-size: 1.3em;
 }
 .dark-mode {
   cursor: pointer;
+}
+.dark-mode--active .header-element{
+  background: hsl(210, 22%, 22%);
+}
+
+.dark-mode--active .header-element h2,
+.dark-mode--active .header-element .dark-mode{
+  color: hsl(0, 0%, 100%);
 }
 
 @media screen and (min-width: 500px) {
@@ -49,9 +68,6 @@ export default {
   .header-element {
     padding: 1em 4em;
   }
-  .header-element h2,
-  .dark-mode {
-    font-size: 1.2em;
-  }
+
 }
 </style>

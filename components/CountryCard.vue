@@ -73,8 +73,13 @@ export default {
   border-top-right-radius: var(--border-radius-img-card);
 }
 
+.dark-mode--active .card .countries-cards-container li {
+  background-color: hsl(210, 22%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
 @media screen and (min-width: 300px) {
-  .countries-cards-container li .countries-card{
+  .countries-cards-container li .countries-card {
     width: 20em;
   }
 }

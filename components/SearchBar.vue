@@ -47,12 +47,18 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: var(--border-radius-img-card);
+  border-radius: var(--border-radius-img-card) ;
   box-shadow: var(--main-shadow);
   background: hsl(0, 0%, 100%);
 }
 .search-country {
   position: relative;
+}
+
+.dark-mode--active .search-container,
+.dark-mode--active .search-container input {
+  background-color: hsl(210, 22%, 22%);
+  color: hsl(0, 0%, 100%);
 }
 @media screen and (min-width: 300px) {
   .searchbar-filter-container {
@@ -78,7 +84,7 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 2em ;
+    padding: 2em;
   }
 
   .search-container {
@@ -95,6 +101,5 @@ export default {
   .search-container {
     margin-left: 2em;
   }
-
 }
 </style>

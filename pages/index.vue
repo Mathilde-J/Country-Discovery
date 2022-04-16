@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <Header />
+  <main :class="darkModeClass">
+    <Header @shift-dark-mode="addDarkClass" />
     <section class="search-country">
       <div class="searchbar-filter-container">
         <SearchBar @search-submit="countriesSearch" />
@@ -29,6 +29,8 @@ export default {
       url: "https://restcountries.com/v3.1/all?fields=name,capital,currencies,population,region,flags,subregion,languages,maps",
       filter: "",
       search: "",
+      darkModeClass: "",
+      // darkModeClass: "dark-mode--active",
     };
   },
   mounted() {
@@ -66,6 +68,15 @@ export default {
       this.search = searchingFor;
       this.loadNumber = 15;
       this.applyFilter();
+    },
+
+    addDarkClass(darkMode) {
+      console.log(darkMode);
+      if (darkMode) {
+        this.darkModeClass = "dark-mode--active";
+      } else {
+        this.darkModeClass = "";
+      }
     },
 
     // TODO : faire une seule fonction pour le tri + fix le nb de résultat
@@ -109,15 +120,13 @@ export default {
 <style>
 :root {
   --border-radius-img-card: 0.3rem;
-  --main-shadow: rgba(56, 56, 56, 0.1) 0px 4px 9px;
+  --main-shadow: rgba(12, 12, 12, 0.207) 0px 6px 10px;
   --main-spacing: 5em;
 }
 @font-face {
   font-family: "poppins-font-main";
   src: url("../assets/Fonts/Poppins/poppins-v19-latin-300.woff") format("woff"),
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-      url("../assets/Fonts/Poppins/poppins-v19-latin-300.ttf")
-      format("truetype"); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    url("../assets/Fonts/Poppins/poppins-v19-latin-300.ttf") format("truetype");
 }
 * {
   padding: 0;
@@ -130,7 +139,7 @@ body {
   font-family: "poppins-font-main";
   letter-spacing: 0.01em;
 }
-main{
+main {
   min-height: 100vh;
 }
 .add-more-section {
@@ -150,4 +159,11 @@ main{
   padding: 2em;
 }
 
+.dark-mode--active {
+  background: hsl(205, 25%, 17%);
+}
+.dark-mode--active .searchbar-filter-container {
+  background-color: hsl(210, 22%, 22%);
+  color: hsl(0, 0%, 100%);
+}
 </style>

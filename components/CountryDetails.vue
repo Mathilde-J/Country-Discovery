@@ -3,11 +3,7 @@
     <div class="details-container">
       <div class="details-close__section">
         <button class="details-close_button" @click="closeSection">
-          <img
-            src="../assets/images/arrow-back-regular-24.png"
-            alt="go back button"
-            class="details-close_button--back"
-          />
+          <i class="fas fa-light fa-arrow-left details-close_button--back"></i>
           Back
         </button>
       </div>
@@ -154,6 +150,21 @@ export default {
 }
 .details-country_lists ul:first-child {
   margin-top: 1.5em;
+}
+
+.dark-mode--active .details-container,
+.dark-mode--active .country-details-list_item {
+  background-color: hsl(205, 25%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+.dark-mode--active .details-close_button,
+.dark-mode--active .far .fa-solid .fa-arrow-left .details-close_button--back {
+  background-color: hsl(210, 22%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark-mode--active .details-flag_img {
+  border: none;
 }
 
 @media screen and (min-width: 800px) {
