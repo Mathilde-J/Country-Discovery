@@ -28,7 +28,7 @@ export default {
 
 <style >
 .searchbar-filter-container {
-  padding: 2em var(--main-spacing);
+  padding: 2em 3em;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;

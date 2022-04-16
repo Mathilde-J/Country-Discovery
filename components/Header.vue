@@ -23,7 +23,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em var(--main-spacing);
+  padding: 1em;
   margin: 0 auto;
   box-shadow: var(--main-shadow);
   position: sticky;
@@ -33,17 +33,25 @@ export default {
 }
 .header-element h2 {
   font-weight: lighter;
+  font-size: 1em;
 }
 .dark-mode {
   cursor: pointer;
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 500px) {
   .header-element {
     padding: 1em;
   }
-  .header-element h2 {
-    font-size: 1em;
+}
+
+@media screen and (min-width: 800px) {
+  .header-element {
+    padding: 1em 4em;
+  }
+  .header-element h2,
+  .dark-mode {
+    font-size: 1.2em;
   }
 }
 </style>

@@ -13,11 +13,7 @@
           v-if="allCountriesCopy.length > 0"
           :resultcountries="allCountriesCopy"
         />
-
         <Loader v-else />
-      </div>
-      <div class="add-more-section">
-        <button @click="loadMore">show more</button>
       </div>
     </section>
   </main>
@@ -30,7 +26,6 @@ export default {
       allCountries: [],
       allCountriesCopy: [],
       loadNumber: 15,
-      numberDisplayedCountries: 0,
       url: "https://restcountries.com/v3.1/all?fields=name,capital,currencies,population,region,flags,subregion,languages,maps",
       filter: "",
       search: "",
@@ -148,30 +143,11 @@ main{
   background: linear-gradient(rgb(255, 255, 255), rgb(190, 179, 179));
 }
 
-.add-more-section button {
-  padding: 1em 3em;
-  border-radius: 6px;
-  border: none;
-}
 .bold-title {
   font-weight: bold;
 }
 .card-display-container {
-  padding: 0 var(--main-spacing);
-}
-/* A partir de 470px */
-@media screen and (min-width: 300px) {
-  body {
-    /* background-color: red; */
-  }
-  .card-display-container {
-    padding: 0 1em;
-  }
+  padding: 2em;
 }
 
-@media screen and (min-width: 300px) {
-  .card-display-container {
-    padding: 0 2em;
-  }
-}
 </style>
