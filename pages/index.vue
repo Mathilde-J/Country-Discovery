@@ -1,5 +1,5 @@
 <template>
-  <main :class="darkModeClass">
+  <main :class="{ 'dark-mode--active': darkModeClass }">
     <Header @shift-dark-mode="addDarkClass" />
     <section class="search-country">
       <div class="searchbar-filter-container">
@@ -30,7 +30,6 @@ export default {
       filter: "",
       search: "",
       darkModeClass: "",
-      // darkModeClass: "dark-mode--active",
     };
   },
   mounted() {
@@ -69,14 +68,11 @@ export default {
       this.loadNumber = 15;
       this.applyFilter();
     },
-
+    // get the darMode value when header component mounted
     addDarkClass(darkMode) {
-      console.log(darkMode);
-      if (darkMode) {
-        this.darkModeClass = "dark-mode--active";
-      } else {
-        this.darkModeClass = "";
-      }
+      // we set darkModeClasse with the darkMode value received
+      // the class is dynamically toggled with vue js
+      this.darkModeClass = darkMode;
     },
 
     // TODO : faire une seule fonction pour le tri + fix le nb de résultat

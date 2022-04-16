@@ -2,7 +2,7 @@
   <div class="header-element">
     <h2>{{ title }} ?</h2>
     <div @click="shiftDarkMode" class="dark-mode">
-      <span >
+      <span>
         <i v-if="darkMode" class="far fa-light fa-sun"></i>
         <i v-else class="far fa-moon"></i>
       </span>
@@ -19,11 +19,27 @@ export default {
       darkMode: false,
     };
   },
+  mounted() {
+    //set the methods to darkMode value into the local storage
+    this.initiateDarkModeValue();
+    //transmit the darkMode value from local storage to the App component
+    this.$emit("shift-dark-mode", this.darkMode);
+  },
   methods: {
     shiftDarkMode() {
-      console.log("heehehe");
-      this.darkMode = !this.darkMode;
-      this.$emit('shift-dark-mode', this.darkMode);
+      localStorage.setItem("darkModeIsActive", `${!this.darkMode}`);
+      this.darkMode = JSON.parse(localStorage.getItem("darkModeIsActive"));
+      this.$emit("shift-dark-mode", this.darkMode);
+    },
+    initiateDarkModeValue() {
+      //gets the value of the dark mode from localstorage
+      const darkModeValue = localStorage.getItem("darkModeIsActive");
+      //if the value exist (true) then we set it in our state/data to render our icon sun/moon
+      if (darkModeValue) {
+        this.darkMode = JSON.parse(darkModeValue);
+      } else {
+        localStorage.setItem("darkModeIsActive", "false");
+      }
     },
   },
 };
@@ -49,12 +65,12 @@ export default {
 .dark-mode {
   cursor: pointer;
 }
-.dark-mode--active .header-element{
+.dark-mode--active .header-element {
   background: hsl(210, 22%, 22%);
 }
 
 .dark-mode--active .header-element h2,
-.dark-mode--active .header-element .dark-mode{
+.dark-mode--active .header-element .dark-mode {
   color: hsl(0, 0%, 100%);
 }
 
@@ -68,6 +84,5 @@ export default {
   .header-element {
     padding: 1em 4em;
   }
-
 }
 </style>
