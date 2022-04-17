@@ -1,6 +1,11 @@
 <template>
   <div>
-    <country-card :countriesToDisplay="resultcountries"></country-card>
+    <country-card
+      :countriesToDisplay="resultcountries"
+      @hide-search-filter="hideSearchFilter"
+      @show-search-filter="showSearchFilter"
+    >
+    </country-card>
   </div>
 </template>
 
@@ -9,6 +14,14 @@ export default {
   props: {
     resultcountries: {
       type: Array,
+    },
+  },
+  methods: {
+    hideSearchFilter(valueFalse) {
+      this.$emit("hide-search-filter", valueFalse);
+    },
+    showSearchFilter(valueTrue) {
+      this.$emit("show-search-filter", valueTrue);
     },
   },
 };
@@ -46,20 +59,20 @@ export default {
   margin: 0 0 0.6em 0;
 }
 
-@media screen and (min-width: 300px ) {
-  .countries-cards-container{
+@media screen and (min-width: 300px) {
+  .countries-cards-container {
     justify-content: center;
     padding: 0;
   }
 }
 
-@media screen and (min-width: 800px ) {
-  .countries-cards-container{
+@media screen and (min-width: 800px) {
+  .countries-cards-container {
     gap: 4em 1.5em;
   }
 }
-@media screen and (min-width: 950px ) {
-  .countries-cards-container{
+@media screen and (min-width: 950px) {
+  .countries-cards-container {
     gap: 4em 2.5em;
   }
 }

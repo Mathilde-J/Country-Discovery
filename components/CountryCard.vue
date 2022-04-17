@@ -4,6 +4,8 @@
       v-if="displayDetails"
       @closeDetails="closeTabDetails"
       :individualCountry="countrydetails"
+      @hide-search-filter="hidesearchFilter"
+      @show-search-filter="showSearchFilter"
     ></country-details>
     <ul v-if="displayDetails === false" class="countries-cards-container">
       <li v-for="countries in countriesToDisplay">
@@ -42,6 +44,12 @@ export default {
     },
     closeTabDetails() {
       this.displayDetails = false;
+    },
+    hidesearchFilter(valueFalse) {
+      this.$emit("hide-search-filter", valueFalse);
+    },
+    showSearchFilter(valueTrue) {
+      this.$emit("show-search-filter", valueTrue);
     },
   },
   props: {

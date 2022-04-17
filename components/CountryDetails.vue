@@ -76,12 +76,19 @@ export default {
   methods: {
     closeSection() {
       this.$emit("closeDetails", false);
+      this.$emit("show-search-filter", true);
     },
+    hidingSearchFilter(){
+      this.$emit("hide-search-filter", false);
+    }
   },
   props: {
     individualCountry: {
       type: Object,
     },
+  },
+  mounted(){
+    this.hidingSearchFilter();
   },
 };
 </script>

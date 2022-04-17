@@ -3,15 +3,17 @@
     <Header @shift-dark-mode="addDarkClass" />
     <section class="search-country">
       <div class="searchbar-filter-container">
-        <SearchBar @search-submit="countriesSearch" />
+        <SearchBar v-if="displayFilterSearch === true" @search-submit="countriesSearch" />
 
-        <ContinentFilter @continent-to-filter="countriesFilter" />
+        <ContinentFilter v-if="displayFilterSearch === true" @continent-to-filter="countriesFilter" />
       </div>
 
       <div class="card-display-container">
         <CardDisplay
           v-if="allCountriesCopy.length > 0"
           :resultcountries="allCountriesCopy"
+          @hide-search-filter="hideSearchFilter"
+          @show-search-filter="showSearchFilter"
         />
         <Loader v-else />
       </div>
@@ -30,6 +32,7 @@ export default {
       filter: "",
       search: "",
       darkModeClass: "",
+      displayFilterSearch: true,
     };
   },
   mounted() {
@@ -108,6 +111,13 @@ export default {
         this.allCountriesCopy = this.allCountries;
         // this.allCountriesCopy.length = this.loadNumber;
       }
+    },
+    hideSearchFilter(value){
+      console.log('test depuis lindex', value);
+      this.displayFilterSearch =  value;
+    },
+    showSearchFilter(valueTrue) {
+      this.displayFilterSearch = valueTrue;
     },
   },
 };
