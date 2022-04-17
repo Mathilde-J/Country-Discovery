@@ -221,7 +221,7 @@ export default {
   }
   .details-country_lists {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
