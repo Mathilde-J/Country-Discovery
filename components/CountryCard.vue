@@ -14,20 +14,21 @@
             id="selectCountry"
             :src="countries.flags.svg"
             :alt="countries.name + ' flag'"
+            loading="lazy"
           />
           <div class="countries-informations">
-            <h2>{{ countries.name.common }}</h2>
-            <p>
+            <h2><strong>{{ countries.name.common }}</strong></h2>
+            <p><strong>
               <span class="bold-title"> Population: </span>
-              {{ countries.population.toLocaleString("fr") }}
-            </p>
-            <p>
+              {{ countries.population.toLocaleString("fr") }} inhabitants
+            </strong></p>
+            <p><strong>
               <span class="bold-title"> Region: </span> {{ countries.region }}
-            </p>
-            <p>
+            </strong></p>
+            <p><strong>
               <span class="bold-title"> Capital: </span>
               {{ countries.capital[0] }}
-            </p>
+            </strong></p>
           </div>
         </div>
       </li>

@@ -5,11 +5,11 @@
     @change="continentSelect"
   >
     <option value=""></option>
-    <option value="Africa">Africa</option>
-    <option value="Americas">Americas</option>
-    <option value="Europe">Europe</option>
-    <option value="Asia">Asia</option>
-    <option value="Oceania">Oceania</option>
+    <option value="Africa"> <strong>Africa </strong></option>
+    <option value="Americas"> <strong>Americas</strong></option>
+    <option value="Europe"> <strong>Europe</strong></option>
+    <option value="Asia"> <strong>Asia</strong></option>
+    <option value="Oceania"> <strong>Oceania</strong></option>
   </select>
 </template>
 

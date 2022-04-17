@@ -15,6 +15,7 @@
               v-if="individualCountry.flags.png"
               :src="individualCountry.flags.png"
               :alt="individualCountry.name.common + ' flag'"
+              loading="lazy"
             />
             <loader v-else></loader>
 
@@ -37,7 +38,7 @@
                   <li class="country-details-list_item">
                     <span class="bold-title">Population :</span>
                     {{ individualCountry.population.toLocaleString("fr") }}
-                    habitants
+                    inhabitants
                   </li>
                 </ul>
                 <ul>
@@ -73,6 +74,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: `Country Discovery - Get informations on ${this.individualCountry.name.common}` ,
+    };
+  },
   methods: {
     closeSection() {
       this.$emit("closeDetails", false);
