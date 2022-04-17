@@ -108,16 +108,15 @@ export default {
     applyFilter(filterToApply) {
       this.allCountriesCopy = [];
       this.allCountriesCopy = filterToApply;
-      // this.allCountriesCopy.length = this.loadNumber;
     },
 
     hideSearchFilter(value) {
-      console.log("test depuis lindex", value);
       this.displayFilterSearch = value;
     },
     showSearchFilter(valueTrue) {
       this.displayFilterSearch = valueTrue;
     },
+
   },
 };
 </script>
