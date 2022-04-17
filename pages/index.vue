@@ -3,9 +3,15 @@
     <Header @shift-dark-mode="addDarkClass" />
     <section class="search-country">
       <div class="searchbar-filter-container">
-        <SearchBar v-if="displayFilterSearch === true" @search-submit="countriesSearch" />
+        <SearchBar
+          v-if="displayFilterSearch === true"
+          @search-submit="countriesSearch"
+        />
 
-        <ContinentFilter v-if="displayFilterSearch === true" @continent-to-filter="countriesFilter" />
+        <ContinentFilter
+          v-if="displayFilterSearch === true"
+          @continent-to-filter="countriesFilter"
+        />
       </div>
 
       <div class="card-display-container">
@@ -52,24 +58,16 @@ export default {
     async sendData() {
       this.allCountries = await this.fetchApiData();
       this.allCountriesCopy = [...this.allCountries];
-      this.numberDisplayedCountries = this.allCountries.length;
-    },
-
-    loadMore() {
-      this.loadNumber += 10;
-      this.applyFilter();
     },
 
     countriesFilter(filterToApply) {
       this.filter = filterToApply;
-      this.loadNumber = 15;
-      this.applyFilter();
+      this.setFilter();
     },
 
     countriesSearch(searchingFor) {
       this.search = searchingFor;
-      this.loadNumber = 15;
-      this.applyFilter();
+      this.setFilter();
     },
     // get the darMode value when header component mounted
     addDarkClass(darkMode) {
@@ -77,25 +75,23 @@ export default {
       // the class is dynamically toggled with vue js
       this.darkModeClass = darkMode;
     },
-
-    // TODO : faire une seule fonction pour le tri + fix le nb de résultat
-    async applyFilter() {
+    async setFilter() {
       if (this.search === "" && this.filter !== "") {
         const filteredRegion = this.allCountries.filter((country) =>
           country.region.includes(this.filter)
         );
-        this.allCountriesCopy = [];
-        this.allCountriesCopy = filteredRegion;
-        // this.allCountriesCopy.length = this.loadNumber;
-      } else if (this.search !== "" && this.filter === "") {
+        return this.applyFilter(filteredRegion);
+      }
+
+      if (this.search !== "" && this.filter === "") {
         const filteredName = this.allCountries.filter((country) => {
           const countryNameLower = country.name.common.toLowerCase();
           return countryNameLower.includes(this.search);
         });
-        this.allCountriesCopy = [];
-        this.allCountriesCopy = filteredName;
-        // this.allCountriesCopy.length = this.loadNumber;
-      } else if (this.search !== "" && this.filter !== "") {
+        return this.applyFilter(filteredName);
+      }
+
+      if (this.search !== "" && this.filter !== "") {
         const filteredNameRegion = this.allCountries.filter((country) => {
           const nameCountryLower = country.name.common.toLowerCase();
           return (
@@ -103,18 +99,21 @@ export default {
             nameCountryLower.includes(this.search)
           );
         });
-        this.allCountriesCopy = [];
-        this.allCountriesCopy = filteredNameRegion;
-        // this.allCountriesCopy.length = this.loadNumber;
-      } else {
-        this.allCountriesCopy = [];
-        this.allCountriesCopy = this.allCountries;
-        // this.allCountriesCopy.length = this.loadNumber;
+        return this.applyFilter(filteredNameRegion);
       }
+
+      return this.applyFilter(this.allCountries);
     },
-    hideSearchFilter(value){
-      console.log('test depuis lindex', value);
-      this.displayFilterSearch =  value;
+
+    applyFilter(filterToApply) {
+      this.allCountriesCopy = [];
+      this.allCountriesCopy = filterToApply;
+      // this.allCountriesCopy.length = this.loadNumber;
+    },
+
+    hideSearchFilter(value) {
+      console.log("test depuis lindex", value);
+      this.displayFilterSearch = value;
     },
     showSearchFilter(valueTrue) {
       this.displayFilterSearch = valueTrue;
