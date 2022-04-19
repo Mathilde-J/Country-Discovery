@@ -188,7 +188,7 @@ main {
   background: hsl(205, 25%, 17%);
 }
 .dark-mode--active .searchbar-filter-container {
-  background-color: hsl(210, 22%, 22%);
+  background-color: hsl(205, 25%, 17%);
   color: hsl(0, 0%, 100%);
 }
 </style>
