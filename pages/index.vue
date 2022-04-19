@@ -21,6 +21,8 @@
           @hide-search-filter="hideSearchFilter"
           @show-search-filter="showSearchFilter"
         />
+        <NoResults v-else-if="allCountriesCopy.length === 0 && search !==''"/>
+
         <Loader v-else />
       </div>
     </section>
