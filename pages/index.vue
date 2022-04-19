@@ -49,6 +49,11 @@ export default {
           name: "keywords",
           content:"country, search, filter, country name, country flag, country currencies, country languages, country capital, country region, region, countries, countries data"
         }
+        // <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+        {
+          property: "og:image",
+          content: "../assets/images/country discovery.PNG"
+        }
       ],
     };
   },
