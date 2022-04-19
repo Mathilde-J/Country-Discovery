@@ -4,15 +4,30 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'countries-app',
+    title: "Country Discovery - Get informations on any country",
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: "description",
+        name: "description",
+        content: "Country Discovery provides a lot of informations, like the languages spoken, currency, number of inhabitants etc, on any country around the world. You can search a country by it's name and filter the countries by continent."
+      },
+      {
+        name: "keywords",
+        content: "country, search, filter, country name, country flag, country currencies, country languages, country capital, country region, region, countries, countries data"
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        content: "/country-discovery.png"
+      },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

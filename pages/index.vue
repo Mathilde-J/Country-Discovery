@@ -31,31 +31,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: "Country Discovery - Get informations on any country",
-      script: [
-        {
-          src: "https://kit.fontawesome.com/2ee7df5156.js",
-          crossorigin: "anonymous",
-        },
-      ],
-      meta: [
-        {
-          name: "description",
-          content:"Country Discovery provides a lot of informations, like the languages spoken, currency, number of inhabitants etc, on any country around the world. You can search a country by it's name and filter the countries by continent."
-        },
-        {
-          name: "keywords",
-          content:"country, search, filter, country name, country flag, country currencies, country languages, country capital, country region, region, countries, countries data"
-        },
-        {
-          property: "og:image",
-          content: "../assets/images/country discovery.PNG"
-        }
-      ],
-    };
-  },
   data() {
     return {
       allCountries: [],
